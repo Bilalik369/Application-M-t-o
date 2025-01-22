@@ -13,35 +13,32 @@
 <body>
     <div class="container">
         <div class="search-box">
-        <i class='bx bxs-map'></i>
-        <input type="text" placeholder="entre votre location">
-        <button class="bx bx-search"></button>
+            <i class='bx bxs-map'></i>
+            <input type="text" placeholder="Enter your location" id="location-input">
+            <button class="bx bx-search" id="search-button"></button>
         </div>
 
         <div class="weather-box">
             <div class="box">
                 <div class="info-weather">
                     <div class="weather">
-                        <img src="images/cloud.png">
-                        <p class="temperature"> 16 <span>°C</span></p>
-                        <p class="description">Broken Clouds</p>
+                        <img src="images/cloud.png" alt="Weather icon" id="weather-icon">
+                        <p class="temperature" id="temperature">0 <span>°C</span></p>
+                        <p class="description" id="description">Broken Clouds</p>
                     </div>
                 </div>
-                
             </div>
-
         </div>
 
         <div class="weather-details">
             <div class="humidity">
-            <i class='bx bx-water'></i>
+                <i class='bx bx-water'></i>
             </div>
             <div class="text">
                 <div class="info-humidity">
-                    <span>0%</span>
-
+                    <span id="humidity">0%</span>
                 </div>
-                <P>humidity</P>
+                <p>Humidity</p>
             </div>
 
             <div class="wind">
@@ -49,17 +46,18 @@
             </div>
             <div class="text">
                 <div class="info-wind">
-                    <span>0km/h</span>
-
+                    <span id="wind">0 km/h</span>
                 </div>
-                <P>Wind</P>
+                <p>Wind</p>
             </div>
-
-
         </div>
 
+        <div class="not-found">
+            <div class="box"></div>
+            <img src="images/OIP-removebg-preview.png" alt="404">
+            <p>Oooopps! Location not found</p>
+        </div>
     </div>
-
 
     <script src="script.js"></script>
 </body>
