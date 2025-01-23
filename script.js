@@ -3,7 +3,9 @@ const search = document.querySelector('.search-box button');
 const weatherBox = document.querySelector('.weather-box');
 const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
-const cityHide = document.querySelector('.city-hide'); 
+const cityHide = document.querySelector('.city-hide');
+const favoritesList = document.getElementById('favorites-list');
+const favoriteButton = document.getElementById('favorite-button');
 
 search.addEventListener('click', () => {
     const APIKey = '283bb4cc073425a015da8969ee5c91ab';
@@ -15,7 +17,7 @@ search.addEventListener('click', () => {
         .then(response => response.json())
         .then(json => {
             if (json.cod === '404') {
-                cityHide.textContent = "  city not found";
+                cityHide.textContent = "city not found";
                 container.style.height = '400px';
                 weatherBox.classList.remove('active');
                 weatherDetails.classList.remove('active');
@@ -34,16 +36,12 @@ search.addEventListener('click', () => {
             const humidity = document.getElementById('humidity');
             const wind = document.getElementById('wind');
 
-            if(cityHide.textContent === city){
+            if (cityHide.textContent === city) {
                 return;
             } else {
                 cityHide.textContent = city;
-                container.style.height = '555px';
-                weatherBox.classList.add('active');
-                weatherDetails.classList.add('active');
-                error404.classList.remove('active');
             }
-                
+
             switch (json.weather[0].main) {
                 case 'Clear':
                     image.src = 'images/clear.png';
@@ -73,4 +71,40 @@ search.addEventListener('click', () => {
         .catch(err => {
             console.error('Error fetching weather data:', err);
         });
+});
+
+
+favoriteButton.addEventListener('click', () => {
+    const city = cityHide.textContent;
+
+    if (!city || city === "city hide" || city === "city not found") {
+        alert("No city to add to favorites!");
+        return;
+    }
+
+    
+    const existingCities = Array.from(favoritesList.children).map(li => li.textContent);
+    if (existingCities.includes(city)) {
+        alert(`${city} is already in favorites!`);
+        return;
+    }
+
+    
+    const li = document.createElement('li');
+    li.textContent = city;
+
+    
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'Remove';
+    removeButton.style.marginLeft = '10px';
+    removeButton.style.cursor = 'pointer';
+    removeButton.addEventListener('click', () => {
+        li.remove();
+    });
+
+    li.appendChild(removeButton);
+    favoritesList.appendChild(li);
+
+    
+    favoriteButton.classList.toggle('active');
 });
