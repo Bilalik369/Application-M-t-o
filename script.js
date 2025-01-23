@@ -3,6 +3,7 @@ const search = document.querySelector('.search-box button');
 const weatherBox = document.querySelector('.weather-box');
 const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
+const cityHide = document.querySelector('.city-hide'); 
 
 search.addEventListener('click', () => {
     const APIKey = '283bb4cc073425a015da8969ee5c91ab';
@@ -14,6 +15,7 @@ search.addEventListener('click', () => {
         .then(response => response.json())
         .then(json => {
             if (json.cod === '404') {
+                cityHide.textContent = "  city not found";
                 container.style.height = '400px';
                 weatherBox.classList.remove('active');
                 weatherDetails.classList.remove('active');
@@ -32,6 +34,16 @@ search.addEventListener('click', () => {
             const humidity = document.getElementById('humidity');
             const wind = document.getElementById('wind');
 
+            if(cityHide.textContent === city){
+                return;
+            } else {
+                cityHide.textContent = city;
+                container.style.height = '555px';
+                weatherBox.classList.add('active');
+                weatherDetails.classList.add('active');
+                error404.classList.remove('active');
+            }
+                
             switch (json.weather[0].main) {
                 case 'Clear':
                     image.src = 'images/clear.png';
