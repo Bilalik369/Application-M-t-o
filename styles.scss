@@ -12,8 +12,115 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url("images/background.jpg");
+  background: url("/images/jj.jpg");
   background-position: center;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url("/images/jj.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.favorites-container {
+  position: relative;
+  width: 400px;
+  height: 100px;
+  background: rgb(255, 255, 255, .1);
+  backdrop-filter: blur(30px);
+  border: 2px solid rgb(255, 255, 255, .2);
+  border-radius: 16px;
+  padding: 20px;
+  color: #fff;
+  transition: height .6s ease;
+
+  h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #f3f3f3;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  #favorites-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    
+
+    li {
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      font-size: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .remove-favorite {
+        cursor: pointer;
+        color: #ff4081;
+        font-size: 20px;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #f50057;
+        }
+      }
+    }
+  }
+}
+
+#favorite-button {
+  background-color: #ff4081;
+  border: none;
+  padding: 14px;
+  border-radius: 50%;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #f50057;
+    transform: scale(1.1);
+  }
+
+  i {
+    transition: all 0.3s ease;
+  }
+
+  &.active i {
+    color: #f1c40f; 
+  }
 }
 
 .container {
